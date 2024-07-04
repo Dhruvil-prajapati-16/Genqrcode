@@ -26,7 +26,6 @@
                     <div class="card-body">
                         <h1 class="text-center mb-4">Generate QR Codes</h1>
                         
-                        
                         <!-- Manual Theme Change Button -->
                         <button style="color: black;" id="manual-theme" class="btn btn-light float-right mr-2 mb-3" onclick="toggleManualTheme()">
                             <i class="bi bi-moon-fill"></i>
@@ -37,7 +36,7 @@
                                 <label for="enrollment_no">Enter your Enrollment Number:</label>
                                 <input type="text" id="enrollment_no" name="enrollment_no" class="form-control" required>
                             </div>
-                            <button id="generate-btn" class="btn btn-primary btn-block">Generate QR Code</button>
+                            <button id="generate-btn" class="btn btn-primary btn-block" type="submit">Generate QR Code</button>
                         </form>
                         
                         <div id="qr-code" class="text-center mt-4"></div>
@@ -69,21 +68,6 @@
     
     <!-- Theme Switching Script -->
     <script>
-        function toggleTheme() {
-            var container = document.querySelector('.container');
-            var themeIcon = document.getElementById('theme-icon');
-            
-            container.classList.toggle('dark-theme');
-            
-            if (container.classList.contains('dark-theme')) {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            } else {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            }
-        }
-        
         function toggleManualTheme() {
             var container = document.querySelector('.container');
             var currentTheme = container.classList.contains('dark-theme') ? 'dark' : 'light';
@@ -105,7 +89,6 @@
             event.preventDefault();
             var enrollmentNo = document.getElementById('enrollment_no').value;
             var qrCodeContainer = document.getElementById('qr-code');
-            var loadingOverlay = document.getElementById('loading-overlay');
             var generateBtn = document.getElementById('generate-btn');
             
             // Show loading spinner on button
@@ -125,9 +108,6 @@
                     colorLight: "#ffffff",
                     correctLevel: QRCode.CorrectLevel.H
                 });
-                
-                // Hide loading overlay
-                loadingOverlay.style.display = 'none';
                 
                 // Show download button
                 var downloadBtn = document.getElementById('download-btn');
