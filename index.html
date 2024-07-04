@@ -9,7 +9,7 @@
     
     <!-- Bootstrap CSS -->
     <link id="bootstrap-theme" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <!-- QR Code JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     
@@ -17,6 +17,18 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- Bootstrap Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        .container {
+            max-width: 750px;
+        }
+    </style>
+    
 </head>
 <body>
     <div class="container mt-5">
@@ -27,8 +39,8 @@
                         <h1 class="text-center mb-4">Generate QR Codes</h1>
                         
                         <!-- Manual Theme Change Button -->
-                        <button style="color: black;" id="manual-theme" class="btn btn-light float-right mr-2 mb-3" onclick="toggleManualTheme()">
-                            <i class="bi bi-moon-fill"></i>
+                        <button id="manual-theme" class="btn btn-light btn-outline-secondary float-right mr-2 mb-3 " onclick="toggleManualTheme()">
+                            <i id="theme-icon" class="bi bi-toggle-off"></i>
                         </button>
                         
                         <form id="qr-form">
@@ -63,22 +75,24 @@
         </div>
     </div>
     
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    
     <!-- Theme Switching Script -->
     <script>
         function toggleManualTheme() {
             var container = document.querySelector('.container');
+            var themeIcon = document.getElementById('theme-icon');
             var currentTheme = container.classList.contains('dark-theme') ? 'dark' : 'light';
             
             // Toggle between dark and light themes
             if (currentTheme === 'dark') {
                 container.classList.remove('dark-theme');
                 document.getElementById('bootstrap-theme').setAttribute('href', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
+                themeIcon.classList.remove('bi-toggle-on');
+                themeIcon.classList.add('bi-toggle-off');
             } else {
                 container.classList.add('dark-theme');
                 document.getElementById('bootstrap-theme').setAttribute('href', 'https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css');
+                themeIcon.classList.remove('bi-toggle-off');
+                themeIcon.classList.add('bi-toggle-on');
             }
         }
     </script>
